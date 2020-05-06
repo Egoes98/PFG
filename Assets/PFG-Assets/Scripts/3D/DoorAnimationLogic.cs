@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LiftDoor : MonoBehaviour
+public class DoorAnimationLogic : MonoBehaviour
 {
     Animator animator;
     bool open;
@@ -15,48 +15,48 @@ public class LiftDoor : MonoBehaviour
 
     IEnumerator Open()
     {
+        animator.SetInteger("State", 1);
         yield return new WaitForSeconds(1);
-        animator.SetInteger("DoorControll", 1);
-        yield return new WaitForSeconds(1);
-        animator.SetInteger("DoorControll", 0);
-        yield return new WaitForSeconds(10);
-        StartCoroutine(Close());
+        animator.SetInteger("State", 2);
+        yield return new WaitForSeconds(5);
+        CloseDoor();
     }
 
     IEnumerator Close()
     {
-        animator.SetInteger("DoorControll", 2);
+        open = false;
+        animator.SetInteger("State", 0);
         yield return new WaitForSeconds(1);
-        animator.SetInteger("DoorControll", 0);
+        animator.SetInteger("State", 2);
     }
 
     public void CloseDoor()
     {
         if (open)
         {
+            open = false;
             StartCoroutine(Close());
         }
     }
 
     public void OpenDoor()
     {
+        print("PUERTA");
         if (!open)
         {
+            print("ABRE");
             open = true;
             StartCoroutine(Open());
 
         }
+        else if(string.Compare(this.gameObject.name, "01_low") == 0)
+        {
+            print("CIERRA");
+            CloseDoor();
+        }
         else
         {
             return;
-        }
-    }
-
-    void Update()
-    {
-        if (animator.GetInteger("DoorControll") == 2)
-        {
-            open = false;
         }
     }
 }

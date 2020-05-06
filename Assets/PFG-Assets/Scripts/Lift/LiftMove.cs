@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LiftMove : MonoBehaviour
 {
-    public LiftDoor lD;
+    public DoorAnimationLogic lD;
     GameManager gM;
 
     void Start()
