@@ -29,14 +29,13 @@ public class LiftMove : MonoBehaviour
         print(gM.getLocation());
         if (string.Compare(actualLocation, "Reception") == 0)
         {
-            print("Moving to Victims Room");
-            SceneManager.LoadScene("VictimsRoom");
+            //SceneManager.LoadScene("VictimsRoom");
             gM.setLocation("VictimsRoom");
         }
         else
         {
             print("Moving to Reception");
-            SceneManager.LoadScene("Reception");
+           // SceneManager.LoadScene("Reception");
             gM.setLocation("Reception");
         }
     }

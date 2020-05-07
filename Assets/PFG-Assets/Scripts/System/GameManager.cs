@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,12 +27,14 @@ public class GameManager : MonoBehaviour
                 audioManager.StopSound();
                 audioManager.Play("ReceptionMusic");
                 player.position = spawnLocations[0];
+                SceneManager.LoadScene("Reception");
             }
             else if(string.Compare(location, "VictimsRoom") == 0)
             {
                 audioManager.StopSound();
                 audioManager.Play("RoomMusic");
                 player.position = spawnLocations[1];
+                SceneManager.LoadScene("VictimsRoom");
             }
             else
             {
