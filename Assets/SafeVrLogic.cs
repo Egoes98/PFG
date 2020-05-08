@@ -1,43 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class SaveLogic : MonoBehaviour
+public class SafeVrLogic : MonoBehaviour
 {
     [Header("Password Settings")]
     public string password;
     public int passwordLong;
 
     [Header("References")]
-    public GameObject logic;
-    GameObject player;
-    public Text inputPannel;
-   
+    public ManageInput mI;
+
     string input;
     bool open;
 
     void Start()
     {
         open = false;
-        player = GameObject.FindGameObjectWithTag("Player");
-    }
-
-    //When interacted call this method
-    public void UseSafe()
-    {
-        if (open) return;
-        player.SetActive(false);
-        logic.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ButtonClicked(string i)
     {
         if (open) return;
         input = input + i;
-        print(input);
-        if(input.Length == passwordLong){
+        if (input.Length == passwordLong)
+        {
             open = true; //Put it on open for now so buttons doesnt work
             Check();
         }
@@ -49,9 +36,6 @@ public class SaveLogic : MonoBehaviour
         if (string.Compare(password, input) == 0)
         {
             print("OPEN");
-            logic.SetActive(false);
-            player.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
             //Play sound
             //OpenDoor
         }
