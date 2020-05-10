@@ -10,6 +10,9 @@ public class SafeVrLogic : MonoBehaviour
 
     [Header("References")]
     public ManageInput mI;
+    public AudioSource correct;
+    public AudioSource incorrect;
+    public Animator anim;
 
     string input;
     bool open;
@@ -22,31 +25,33 @@ public class SafeVrLogic : MonoBehaviour
     public void ButtonClicked(string i)
     {
         if (open) return;
+        mI.ManageSlots(i);
         input = input + i;
         if (input.Length == passwordLong)
         {
-            open = true; //Put it on open for now so buttons doesnt work
-            Check();
+            open = true;
+            StartCoroutine("waitForCheck");
         }
+    }
+
+    IEnumerator waitForCheck()
+    {
+        yield return new WaitForSeconds(1);
+        Check();
     }
 
     void Check()
     {
-        //Check to see if password is correct
         if (string.Compare(password, input) == 0)
         {
-            print("OPEN");
-            //Play sound
-            //OpenDoor
+            correct.Play(0);
+            anim.SetBool("Open", true);
         }
         else
         {
-            print("CLOSED");
-            open = false; //Chnage the state o show it isnt open
-            //Clear Text
-            //Play error sound
-            //TODO
-            return;
+            incorrect.Play(0);
+            mI.Clear();
+            open = false;
         }
     }
 }
