@@ -29,24 +29,33 @@ public class SaveLogic : MonoBehaviour
         use = false;
     }
 
-    void FixedUpdate()
+    public void EnterSafe()
     {
-        if (use && Input.GetKeyDown(KeyCode.E))
-        {
-            logic.SetActive(false);
-            player.SetActive(true);
-            Cursor.lockState = CursorLockMode.Locked;
-            use = false;
-        }
-    }
-
-    public void UseSafe()
-    {
-        if (use||open) return;
         player.SetActive(false);
         logic.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         use = true;
+    }
+
+    public void ExitSafe()
+    {
+        use = false;
+        logic.SetActive(false);
+        player.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void UseSafe()
+    {
+        if (open) return;
+        if (use)
+        {
+            ExitSafe();
+        }
+        else
+        {
+            EnterSafe();
+        }
     }
 
     public void ButtonClicked(string i)
@@ -71,6 +80,7 @@ public class SaveLogic : MonoBehaviour
         if (string.Compare(password, input) == 0)
         {
             correct.Play(0);
+            use = false;
             logic.SetActive(false);
             player.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
