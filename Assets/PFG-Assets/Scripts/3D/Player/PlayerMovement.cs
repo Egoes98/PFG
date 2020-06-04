@@ -25,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 velocity;
     bool isGrounded;
 
+    void Start()
+    {
+        GameObject gM = GameObject.FindGameObjectWithTag("GameManager");
+        transform.position = gM.GetComponent<GameManager>().getPos();
+    }
+
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);

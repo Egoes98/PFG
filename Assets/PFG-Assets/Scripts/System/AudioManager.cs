@@ -16,11 +16,11 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
             return;
         }
 
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this);
 
         foreach (Sound s in sounds)
         {

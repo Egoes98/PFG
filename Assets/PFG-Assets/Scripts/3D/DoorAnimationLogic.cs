@@ -6,28 +6,22 @@ public class DoorAnimationLogic : MonoBehaviour
 {
     Animator animator;
     bool open;
+    public bool locked;
+    public bool closeOverTime;
+    public bool dontClose;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         open = false;
+        dontClose = false;
     }
 
-    IEnumerator Open()
+    IEnumerator CloseOverTime()
     {
-        animator.SetInteger("State", 1);
-        yield return new WaitForSeconds(1);
-        animator.SetInteger("State", 2);
         yield return new WaitForSeconds(5);
-        CloseDoor();
-    }
-
-    IEnumerator Close()
-    {
         open = false;
-        animator.SetInteger("State", 0);
-        yield return new WaitForSeconds(1);
-        animator.SetInteger("State", 2);
+        animator.SetBool("Open", open);
     }
 
     public void CloseDoor()
@@ -35,28 +29,34 @@ public class DoorAnimationLogic : MonoBehaviour
         if (open)
         {
             open = false;
-            StartCoroutine(Close());
+            animator.SetBool("Open", open);
         }
     }
 
-    public void OpenDoor()
+
+    public void InteractDoor()
     {
-        print("PUERTA");
+        if (locked) return;
         if (!open)
         {
-            print("ABRE");
             open = true;
-            StartCoroutine(Open());
+            animator.SetBool("Open", open);
+            if (closeOverTime) StartCoroutine(CloseOverTime());
 
         }
-        else if(string.Compare(this.gameObject.name, "01_low") == 0)
-        {
-            print("CIERRA");
-            CloseDoor();
-        }
-        else
+        else if(dontClose)
         {
             return;
         }
+        else
+        {
+            open = false;
+            animator.SetBool("Open", open);
+        }
+    }
+
+    public void Unlock()
+    {
+        locked = false;
     }
 }

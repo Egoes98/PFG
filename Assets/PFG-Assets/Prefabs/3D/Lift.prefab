@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b7b47f6a7c3cf4fb1bdf673a399ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lD: {fileID: 0}
+  lD: {fileID: 7064507229374690686}
 --- !u!1 &7064507228449790337
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +473,7 @@ GameObject:
   - component: {fileID: 7064507229157717623}
   - component: {fileID: 7064507229157717620}
   - component: {fileID: 7064507229157717621}
+  - component: {fileID: 3625094279998686192}
   m_Layer: 0
   m_Name: CallButtom
   m_TagString: Interactable
@@ -581,7 +582,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7064507229374690686}
-        m_MethodName: OpenDoor
+        m_MethodName: InteractDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -591,6 +592,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  outline: {fileID: 3625094279998686192}
 --- !u!114 &7064507229157717620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -699,6 +701,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3625094279998686192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064507229157717582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &7064507229374690685
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +940,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d7158b0f9124e647b7cfae43c7225d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  locked: 0
+  closeOverTime: 1
+  dontClose: 1
 --- !u!1 &7064507229569969882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,6 +1144,7 @@ GameObject:
   - component: {fileID: 9137736911403092062}
   - component: {fileID: 9137736911403092057}
   - component: {fileID: 9137736911403092056}
+  - component: {fileID: 461340173206634894}
   m_Layer: 0
   m_Name: VictimsRoom
   m_TagString: Interactable
@@ -1230,6 +1252,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  outline: {fileID: 461340173206634894}
 --- !u!114 &9137736911403092057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1338,6 +1361,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &461340173206634894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137736911403092058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1 &9137736911695690463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1424,7 @@ GameObject:
   - component: {fileID: 9137736912143821697}
   - component: {fileID: 9137736912143821696}
   - component: {fileID: 9137736912143821699}
+  - component: {fileID: 1481194383830976694}
   m_Layer: 0
   m_Name: OpenDoor
   m_TagString: Interactable
@@ -1493,7 +1533,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 7064507229374690686}
-        m_MethodName: OpenDoor
+        m_MethodName: InteractDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1503,6 +1543,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  outline: {fileID: 1481194383830976694}
 --- !u!114 &9137736912143821696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1611,6 +1652,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1481194383830976694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9137736912143821821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 2
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
 --- !u!1001 &7064507228984151026
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -26,17 +26,14 @@ public class LiftMove : MonoBehaviour
         string actualLocation = gM.getLocation();
         gM.setLocation("Lift");
         yield return new WaitForSeconds(10);
-        print(gM.getLocation());
-        if (string.Compare(actualLocation, "Reception") == 0)
+        switch (actualLocation)
         {
-            //SceneManager.LoadScene("VictimsRoom");
-            gM.setLocation("VictimsRoom");
-        }
-        else
-        {
-            print("Moving to Reception");
-           // SceneManager.LoadScene("Reception");
-            gM.setLocation("Reception");
+            case "Reception":
+                gM.setLocation("VictimsRoom");
+                break;
+            case "VictimsRoom":
+                gM.setLocation("Reception");
+                break;
         }
     }
 }

@@ -7,14 +7,26 @@ public class GameManager : MonoBehaviour
 {
     public AudioManager audioManager;
     string location;
-    public List<Vector3> spawnLocations;
-    public Transform player;
+    Transform player;
+    public List<Vector3> playerPos;
+    public SceneLoader sL;
+
+    void Awake()
+    {
+        location = "Reception";
+    }
 
     void Start()
     {
-        location = "Reception";
-        print("Location START: " + location);
         audioManager.Play("ReceptionMusic");
+    }
+
+    void Update()
+    {
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
     }
 
     public void setLocation(string l)
@@ -22,25 +34,54 @@ public class GameManager : MonoBehaviour
         if (location != l)
         {
             location = l;
-            if (string.Compare(location,"Reception") == 0)
+            switch (location)
             {
+                case "Reception":
+                    playerPos[1] = player.position;
+                    sL.LoadScene(0);
+                    break;
+                case "VictimsRoom":
+                    playerPos[0] = player.position;
+                    sL.LoadScene(1);
+                    break;
+                case "Lift":
+                    audioManager.StopSound();
+                    audioManager.Play("LiftMusic");
+                    break;
+            }
+        }
+    }
+
+    public void AfterLoaded()
+    {
+        switch (location)
+        {
+            case "Reception":
                 audioManager.StopSound();
                 audioManager.Play("ReceptionMusic");
-                player.position = spawnLocations[0];
-                SceneManager.LoadScene("Reception");
-            }
-            else if(string.Compare(location, "VictimsRoom") == 0)
-            {
+                break;
+            case "VictimsRoom":
                 audioManager.StopSound();
                 audioManager.Play("RoomMusic");
-                player.position = spawnLocations[1];
-                SceneManager.LoadScene("VictimsRoom");
-            }
-            else
-            {
-                audioManager.StopSound();
-                audioManager.Play("LiftMusic");
-            }
+                break;
+            default:
+                break;
+        }
+    }
+
+    public Vector3 getPos()
+    {
+        switch (location)
+        {
+            case "Reception":
+                return playerPos[0];
+                break;
+            case "VictimsRoom":
+                return playerPos[1];
+                break;
+            default:
+                return new Vector3(0,0,0);
+                break;
         }
     }
 

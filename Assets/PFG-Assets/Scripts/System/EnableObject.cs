@@ -8,6 +8,6 @@ public class EnableObject : MonoBehaviour
 
     public void enable()
     {
-        obj.SetActive(true);
+        if(obj != null) obj.SetActive(true);
     }
 }

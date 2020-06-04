@@ -6,23 +6,36 @@ using UnityEngine.Events;
 public class ObjectInteraction : MonoBehaviour
 {
     public UnityEvent activate;
+    public cakeslice.Outline outline;
     bool lookingAt;
+    Transform camera;
 
     void Start()
     {
+        camera = Camera.main.transform;
         lookingAt = false;
+        outline.enabled = false;
+    }
+
+    public void isLooking(bool l)
+    {
+        lookingAt = l;
     }
 
     void Update()
     {
-        if (lookingAt && Input.GetKeyDown(KeyCode.E))
+        if (lookingAt)
         {
-            activate.Invoke();
+            outline.enabled = true;
+            if(Input.GetMouseButtonDown(0))
+            {
+                outline.enabled = false;
+                activate.Invoke();
+            }
         }
-    }
-
-    public void isLooking(bool looking)
-    {
-        lookingAt = looking;
+        else
+        {
+            outline.enabled = false;
+        }
     }
 }

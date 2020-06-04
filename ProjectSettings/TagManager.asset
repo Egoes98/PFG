@@ -8,6 +8,7 @@ TagManager:
   - GameManager
   - Managers
   - Canvas
+  - Inventory
   layers:
   - Default
   - TransparentFX

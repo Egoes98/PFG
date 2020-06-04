@@ -19,7 +19,6 @@ public class LightControll : MonoBehaviour
     public void changeState()
     {
         state = !state;
-        print(state);
         foreach (GameObject light in lights)
         {
             light.SetActive(state);
