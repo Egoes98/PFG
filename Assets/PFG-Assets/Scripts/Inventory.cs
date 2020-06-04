@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour
 
     public ClueUILogic cUIL;
 
+    public InvetoryCanvasLogic iCL;
+
     void Awake()
     {
         //Clues
@@ -34,6 +36,7 @@ public class Inventory : MonoBehaviour
         if (own) return;
         clues[key] = true;
         cUIL.addClues(key);
+        iCL.AddClue(key);
     }
     public void addObject(string key)
     {
@@ -42,6 +45,7 @@ public class Inventory : MonoBehaviour
         if (own) return;
         objects[key] = true;
         cUIL.ObjectAdquired(key);
+        iCL.AddObject(key);
     }
     public bool checkObject(string key)
     {

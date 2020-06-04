@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     string location;
     Transform player;
     public List<Vector3> playerPos;
+    public GameObject inventoryCanvas;
     public SceneLoader sL;
+    MouseMode mouse_mode;
 
     void Awake()
     {
@@ -19,11 +21,22 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         audioManager.Play("ReceptionMusic");
+        mouse_mode = Camera.main.GetComponent<MouseMode>();
     }
 
     void Update()
     {
-        if(player == null)
+        if (Input.GetKeyDown("i"))
+        {
+            inventoryCanvas.SetActive(true);
+            mouse_mode.Enter();  
+        }
+        if (Input.GetKeyDown("escape"))
+        {
+            inventoryCanvas.SetActive(false);
+            mouse_mode.Exit();
+        }
+        if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
@@ -88,7 +101,5 @@ public class GameManager : MonoBehaviour
     public string getLocation()
     {
         return location;
-    }
-
-    
+    }   
 }
