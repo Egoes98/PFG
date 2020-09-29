@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PFG-Assets/Scenes/3D/VictimsRoom.unity
     guid: 05d72b57cb8e0a940be4eb48e077e9cf
+  - enabled: 1
+    path: Assets/PFG-Assets/Scenes/Credits.unity
+    guid: c76caf1e2be29e44dbf342b06f1ff3d3
+  - enabled: 1
+    path: Assets/PFG-Assets/Scenes/3D/Reception/Reception_2.unity
+    guid: a6a35a20b48b60642adc98cef05a4def
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 3cca83abd45a7534c8f93ddf505e4604,
       type: 2}

@@ -9,6 +9,7 @@ TagManager:
   - Managers
   - Canvas
   - Inventory
+  - Inventory_canvas
   layers:
   - Default
   - TransparentFX

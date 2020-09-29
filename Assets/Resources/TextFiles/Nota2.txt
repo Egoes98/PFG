@@ -1,0 +1,9 @@
+Un documento escrito por el señor Anderson, junto a una nota.
+“Cuantas pendientes
+- Mock Booyaket: Pago realizado
+-George Wright: Pago pendiente”
+“Estimado señor Wright
+No me gusta atosigarle con cartas, pero se ha pasado del plazo para devolver el dinero que le preste. No me gusta su actitud hacia mí y la ayuda que le he brindado. Veo que quiere venir al hotel a discutir el tema. Le recibiré con los brazos abiertos, a usted y a su dinero.
+Un saludo
+John Anderson”
+Menciona otro nombre ¿Podría estar involucrado?

@@ -39,13 +39,17 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
 
+        //Capturar Input
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
+        //calcular el vector de movimiento
         Vector3 move = transform.right * x + transform.forward * z;
 
+        //Enviar movimiento al controler para que lo procese
         controller.Move(move * speed * Time.deltaTime);
 
+        //Detectar tecla de salto y si el jugador esta bien posicionado
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -53,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
+        //Enviar parametros para realizar el salto
         controller.Move(velocity * Time.deltaTime);
     }
 }

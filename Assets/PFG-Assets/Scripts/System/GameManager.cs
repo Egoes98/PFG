@@ -10,8 +10,13 @@ public class GameManager : MonoBehaviour
     Transform player;
     public List<Vector3> playerPos;
     public GameObject inventoryCanvas;
+    public Inventory inv;
     public SceneLoader sL;
     MouseMode mouse_mode;
+
+    public GameObject UI_overlay;
+
+    static public bool inMenu = false;
 
     void Awake()
     {
@@ -28,18 +33,33 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown("i"))
         {
+            UI_overlay.SetActive(false);
             inventoryCanvas.SetActive(true);
-            mouse_mode.Enter();  
+            mouse_mode.Enter();
+            player.gameObject.SetActive(false);
+            inMenu = true;
         }
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetKeyDown("escape") & inMenu)
         {
+            inMenu = false;
+            UI_overlay.SetActive(true);
             inventoryCanvas.SetActive(false);
+            player.gameObject.SetActive(true);
             mouse_mode.Exit();
         }
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        if(mouse_mode == null)
+        {
+            mouse_mode = Camera.main.GetComponent<MouseMode>();
+        }
+    }
+
+    public bool HaveClues() 
+    {
+        return !inv.checkClues();
     }
 
     public void setLocation(string l)
@@ -51,7 +71,7 @@ public class GameManager : MonoBehaviour
             {
                 case "Reception":
                     playerPos[1] = player.position;
-                    sL.LoadScene(0);
+                    sL.LoadScene(3);
                     break;
                 case "VictimsRoom":
                     playerPos[0] = player.position;

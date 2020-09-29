@@ -22,11 +22,11 @@ public class Inventory : MonoBehaviour
 
         //Objects
         objects.Add("Tarjeta",false);           //To open the door
-        objects.Add("bottle_red", false);       //To bottle minigame
-        objects.Add("bottle_green", false);     //To bottle minigame
-        objects.Add("bottle_blue", false);      //To bottle minigame
+        objects.Add("Botella Roja", false);       //To bottle minigame
+        objects.Add("Botella Verde", false);     //To bottle minigame
+        objects.Add("Botella Azul", false);      //To bottle minigame
         objects.Add("Acido", false);            //To break seal
-        objects.Add("Llave Armario", false);    //To open Closet
+        objects.Add("Llave", false);    //To open Closet
     }
 
     public void addClue(string key)
@@ -60,17 +60,8 @@ public class Inventory : MonoBehaviour
             return false;
         }
     }
-    public bool checkClues(string key)
+    public bool checkClues()
     {
-        bool own = false;
-        clues.TryGetValue(key, out own);
-        if (own)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+        return clues.ContainsValue(false);
+    } 
 }

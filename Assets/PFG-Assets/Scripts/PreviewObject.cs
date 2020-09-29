@@ -22,11 +22,16 @@ public class PreviewObject : MonoBehaviour
 
     public bool detroyWhenTaken;
 
+    ClueUILogic clueUILogic;
+    ObjectsData objData;
+
     void Start()
     {
         use = false;
         rb = GetComponent<Rigidbody>();
         mC = GetComponent<MeshCollider>();
+        clueUILogic = GameObject.FindGameObjectWithTag("Canvas").GetComponent<ClueUILogic>();
+        objData = GetComponent<ObjectsData>();
     }
 
 
@@ -40,6 +45,7 @@ public class PreviewObject : MonoBehaviour
 
     void EnterViewMode()
     {
+        clueUILogic.OnInteractionHints(objData.name);
         prevObjPos = transform.position;
         prevObjRot = transform.rotation;
 
@@ -57,6 +63,9 @@ public class PreviewObject : MonoBehaviour
 
     void ExitViewMode()
     {
+        clueUILogic.OfInteractionHints();
+        clueUILogic.TurnOffDescription();
+
         transform.position = prevObjPos;
         transform.rotation = prevObjRot;
 
@@ -77,6 +86,10 @@ public class PreviewObject : MonoBehaviour
             if (Input.GetMouseButtonDown(1))
             {
                 ExitViewMode();
+            }
+            if (Input.GetKeyDown("e"))
+            {
+                clueUILogic.ChangeDescriptionState();
             }
             if (Input.GetMouseButton(0))
             {

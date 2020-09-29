@@ -8,7 +8,7 @@ public class SaveLogic : MonoBehaviour
 {
     [Header("Password Settings")]
     public string password;
-    public int passwordLong;
+    public int passwordLenght;
 
     [Header("References")]
     public GameObject logic;
@@ -60,7 +60,7 @@ public class SaveLogic : MonoBehaviour
         if (open) return;
         mI.ManageSlots(i);
         input = input + i;
-        if (input.Length == passwordLong){
+        if (input.Length == passwordLenght){
             open = true;
             StartCoroutine("waitForCheck");
         }
@@ -82,6 +82,7 @@ public class SaveLogic : MonoBehaviour
             player.SetActive(true);
             Cursor.lockState = CursorLockMode.Locked;
             anim.SetBool("Open",true);
+            Destroy(GetComponent<cakeslice.Outline>());
             mC.enabled = false;
         }
         else

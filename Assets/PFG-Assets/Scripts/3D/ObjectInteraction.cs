@@ -6,15 +6,16 @@ using UnityEngine.Events;
 public class ObjectInteraction : MonoBehaviour
 {
     public UnityEvent activate;
+    public UnityEvent activate_first_time;
     public cakeslice.Outline outline;
     bool lookingAt;
-    Transform camera;
+    bool firstTime;
 
     void Start()
     {
-        camera = Camera.main.transform;
         lookingAt = false;
-        outline.enabled = false;
+        if (outline != null) outline.enabled = false;
+        firstTime = false;
     }
 
     public void isLooking(bool l)
@@ -24,17 +25,24 @@ public class ObjectInteraction : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.inMenu) return;
         if (lookingAt)
         {
-            outline.enabled = true;
+            if (outline != null) outline.enabled = true;
             if(Input.GetMouseButtonDown(0))
             {
-                outline.enabled = false;
+                if (outline != null) outline.enabled = false;
                 activate.Invoke();
+                if (!firstTime & activate_first_time != null)
+                {
+                    activate_first_time.Invoke();
+                }
+                firstTime = true;
             }
         }
         else
         {
+            if (outline == null) return;
             outline.enabled = false;
         }
     }

@@ -16,10 +16,54 @@ public class ClueUILogic : MonoBehaviour
     int collectedClues;
     public Text collectedCluesText;
 
+    [Header("Interaction Hints")]
+    public GameObject description;
+    public GameObject interactionHints;
+
+    [Header("Description Logic")]
+    public Descriptions desc;
+    public Text desc_text_displayer;
+    public Text desc_tittle_displayer;
+
     // Start is called before the first frame update
     void Start()
     {
         totalCluesText.text = "" + totalClues;
+    }
+
+    public void OnInteractionHints(string name)
+    {
+        ChangeDescription(name);
+        interactionHints.SetActive(true);
+    }
+
+    public void OfInteractionHints()
+    {
+        interactionHints.SetActive(false);
+    }
+
+    void ChangeDescription(string name)
+    {
+        desc_tittle_displayer.text = name;
+        desc_text_displayer.text = desc.GetDescription(name);
+    }
+
+    public void TurnOffDescription()
+    {
+        description.SetActive(false);
+    }
+
+    public void ChangeDescriptionState()
+    {
+        if (description.activeSelf)
+        {
+            description.SetActive(false);
+        }
+        else
+        {
+            description.SetActive(true);
+
+        }
     }
 
     public void addClues(string name)

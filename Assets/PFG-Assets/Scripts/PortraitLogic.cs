@@ -16,6 +16,6 @@ public class PortraitLogic : MonoBehaviour
     {
         rb.useGravity = true;
         oI.enabled = false;
-        
+        Destroy(GetComponent<cakeslice.Outline>());
     }
 }

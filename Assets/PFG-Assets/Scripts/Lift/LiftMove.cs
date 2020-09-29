@@ -15,25 +15,18 @@ public class LiftMove : MonoBehaviour
         gM = gMObject.GetComponent<GameManager>();
     }
 
-   public void goToVictimRoom()
+   public void goToVictimRoom(string location)
     {
-        StartCoroutine(move());
+        StartCoroutine(move(location));
     }
 
-    IEnumerator move()
+    IEnumerator move(string location)
     {
         lD.CloseDoor();
         string actualLocation = gM.getLocation();
         gM.setLocation("Lift");
         yield return new WaitForSeconds(10);
-        switch (actualLocation)
-        {
-            case "Reception":
-                gM.setLocation("VictimsRoom");
-                break;
-            case "VictimsRoom":
-                gM.setLocation("Reception");
-                break;
-        }
+        gM.setLocation(location);
+
     }
 }

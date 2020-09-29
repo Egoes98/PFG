@@ -5,7 +5,6 @@ using UnityEngine;
 public class ObjectsData : MonoBehaviour
 {
     public string name;
-    public bool saveObject;
     [Range(0, 1)]
     public int type; //1-Clue 0-Usable Object
 
